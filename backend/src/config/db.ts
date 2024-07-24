@@ -1,13 +1,10 @@
 import { Sequelize } from 'sequelize';
 
-// Database configuration
-const sequelize = new Sequelize('chat_app', 'username', 'password', {
-  host: 'localhost',
+const sequelize = new Sequelize('chat_app', 'postgres', 'password', {
+  host: '127.0.0.1',
   dialect: 'postgres',
-  logging: false, // Optional: Set to true for debugging
 });
 
-// Function to test the database connection
 export const connectDB = async () => {
   try {
     await sequelize.authenticate();
@@ -17,5 +14,4 @@ export const connectDB = async () => {
   }
 };
 
-// Export sequelize instance for use in other parts of the application
 export default sequelize;

@@ -1,11 +1,9 @@
-// src/routes/authRoutes.ts
-
 import express from 'express';
-import { registerUser } from '../controllers/authController';
+import { registerUser, signIn } from '../controllers/authController';
 
 const router = express.Router();
 
-// Route for user registration
 router.post('/register', registerUser);
+router.post('/signin', signIn);
 
 export default router;
