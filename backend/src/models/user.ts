@@ -10,13 +10,11 @@ interface UserAttributes {
   password: string;
   displayName?: string;
   profilePicture?: string;
-  status?: string;
+
 }
 
-// Define the type for optional attributes
 interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
 
-// Define the User model class
 class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
   public id!: string;
   public username!: string;
@@ -24,7 +22,8 @@ class User extends Model<UserAttributes, UserCreationAttributes> implements User
   public password!: string;
   public displayName?: string;
   public profilePicture?: string;
-  public status?: string;
+  
+
 }
 
 // Initialize the User model
@@ -56,10 +55,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    status: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
+   
   },
   {
     sequelize, // passing the `sequelize` instance is required

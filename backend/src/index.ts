@@ -1,20 +1,21 @@
-// src/index.ts
-
 import express from 'express';
-import { connectDB } from './config/db';
+import cookieParser from 'cookie-parser';
 import authRoutes from './routes/authRoutes';
+import userRoutes from  './routes/userRoutes';
+import dotenv from 'dotenv';
+import { connectDB } from './config/db';
 
-const app = express();
-
-// Connect to the database
+dotenv.config();
 connectDB();
-
-// Middleware
-app.use(express.json());
-
-// Routes
-app.use('/api/auth', authRoutes);
-
-// Start server
+const app = express();
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+app.use(express.json());
+app.use(cookieParser());
+
+app.use('/api/auth', authRoutes);
+app.use('/api/user', userRoutes);
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
