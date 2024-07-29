@@ -9,7 +9,7 @@ io.on("connection", (socket) => {
   console.log("New client connected");
 
   socket.on("sendMessage", (message) => {
-    io.emit("message", message); // Broadcast message to all clients
+    io.emit("message", message); 
   });
 
   socket.on("disconnect", () => {

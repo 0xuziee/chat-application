@@ -34,7 +34,6 @@ export const sendMessage = async (req: Request, res: Response) => {
   }
 };
 
-// Fetch messages for a specific user or group
 export const getMessages = async (req: Request, res: Response) => {
   const { userId, groupId } = req.query;
 
@@ -42,25 +41,23 @@ export const getMessages = async (req: Request, res: Response) => {
     const whereClause = {};
 
     if (userId) {
-      // Fetch messages for a specific user
       Object.assign(whereClause, {
         [Op.or]: [
           { senderId: userId },
           { receiverId: userId },
-          { groupId: null },  // Ensure direct messages are included
+          { groupId: null },  
         ],
       });
     }
 
     if (groupId) {
-      // Fetch messages for a specific group
       Object.assign(whereClause, { groupId });
     }
 
     const messages = await Message.findAll({
       where: whereClause,
-      include: ['sender', 'receiver'],  // Include sender and receiver details
-      order: [['createdAt', 'ASC']],    // Order messages by creation time
+      include: ['sender', 'receiver'],  
+      order: [['createdAt', 'ASC']],    
     });
 
     res.json(messages);
@@ -70,15 +67,14 @@ export const getMessages = async (req: Request, res: Response) => {
   }
 };
 
-// Fetch messages for a specific group
 export const getGroupMessages = async (req: Request, res: Response) => {
   const { groupId } = req.params;
 
   try {
     const messages = await Message.findAll({
       where: { groupId },
-      include: ['sender'],  // Include sender details
-      order: [['createdAt', 'ASC']],  // Order messages by creation time
+      include: ['sender'],  
+      order: [['createdAt', 'ASC']],  
     });
 
     res.json(messages);

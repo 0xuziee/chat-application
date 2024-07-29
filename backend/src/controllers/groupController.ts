@@ -12,7 +12,6 @@ export const createGroup = async (req: Request, res: Response) => {
   try {
     const group = await Group.create({ name });
 
-    // Optionally, add members to the group here
 
     res.status(201).json(group);
   } catch (error) {

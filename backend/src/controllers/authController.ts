@@ -38,7 +38,6 @@ export const registerUser = async (req: Request, res: Response) => {
   }
 };
 
-// Sign in a user
 export const signIn = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 

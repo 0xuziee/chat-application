@@ -23,10 +23,10 @@ SocketIO.attach(server);
 
 
 const corsOptions = {
-  origin: 'http://localhost:3000', // Replace with your frontend URL
+  origin: 'http://localhost:3000', 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true // Allow credentials (cookies, authorization headers, etc.)
+  credentials: true 
 };
 
 app.use(cors(corsOptions));

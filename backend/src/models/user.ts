@@ -26,7 +26,6 @@ class User extends Model<UserAttributes, UserCreationAttributes> implements User
 
 }
 
-// Initialize the User model
 User.init(
   {
     id: {
@@ -58,8 +57,8 @@ User.init(
    
   },
   {
-    sequelize, // passing the `sequelize` instance is required
-    modelName: 'users', // We need to choose the model name
+    sequelize, 
+    modelName: 'users', 
   }
 );
 
