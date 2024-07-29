@@ -3,12 +3,10 @@ import User from '../models/user';
 
 
 interface AuthenticatedRequest extends Request {
-    user?: { id: number }; // Adjust this type according to your needs
+    user?: { id: number };
   }
   
 
-
-// Get user profile
 export const getUserProfile = async (req: AuthenticatedRequest, res: Response) => {
   const userId = req.user?.id;
 
@@ -32,7 +30,6 @@ export const getUserProfile = async (req: AuthenticatedRequest, res: Response) =
   }
 };
 
-// Update user profile
 export const updateUserProfile = async (req: AuthenticatedRequest, res: Response) => {
   const userId = req.user?.id;
   const { displayName, profilePicture } = req.body;

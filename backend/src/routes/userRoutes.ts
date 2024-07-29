@@ -1,4 +1,3 @@
-// routes/userRoutes.ts
 import { Router } from 'express';
 import { getUserProfile, updateUserProfile } from '../controllers/userController';
 import authenticateToken from '../middlewares/auth';
