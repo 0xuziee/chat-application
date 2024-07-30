@@ -1,0 +1,121 @@
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #718799;
+}
+
+.auth-form {
+  background: #E6EEF2;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auth-form h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 400;
+  font-family: 'Righteous', sans-serif;
+  font-size: 45px;
+  color: #06334D;
+}
+
+.auth-form input {
+  margin: auto;
+  width: 66%;
+  height: 25px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: 1px solid #97B4CC;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+}
+
+.auth-form input.error {
+
+  border-color: red;
+}
+
+.auth-form .error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: -10px;
+  margin-left: 60px;
+  margin-bottom: 10px;
+}
+
+.success-message {
+  color: green; // Change to green for success messages
+  font-size: 0.875rem;
+  margin-top: -10px;
+  margin-left: 60px;
+  margin-bottom: 10px;
+}
+
+.auth-form button {
+  width: 73%;
+  padding: 0.75rem;
+  margin: auto;
+  background: #06334D;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+}
+
+.auth-form button:hover {
+  background: #051F36;
+}
+
+.second-btn {
+  width: 70%;
+  padding: 0.75rem;
+  margin: auto;
+  text-align: center;
+  background: transparent;
+  border: 1px solid #06334D;
+  color: #000;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid #ccc;
+}
+
+.divider::before {
+  margin-right: 10px;
+}
+
+.divider::after {
+  margin-left: 10px;
+}
+
+.divider span {
+  display: inline-block;
+  padding: 0 10px;
+  color: #333;
+  background: transparent;
+}

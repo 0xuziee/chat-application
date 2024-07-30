@@ -1,0 +1,65 @@
+/* ProfileModal.scss */
+.profile-modal-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end; /* Align the modal to the right */
+  z-index: 1000; /* Ensure it's behind the edit profile modal */
+}
+
+.profile-modal {
+  background: white;
+  width: 25%; /* Set the width of the modal */
+  height: 100%; /* Full height of the screen */
+  padding: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure it's behind the edit profile modal */
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: #007bff;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.profile-header {
+  text-align: left;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.profile-info {
+  margin-top: 20px;
+}
+
+.edit-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 20%;
+  margin-top: 20px;
+  border-radius: 5px;
+  margin-left: 80%;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}

@@ -1,0 +1,34 @@
+.main-content {
+    background-color: #FAFDFF;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    height: 100vh;
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    img {
+        margin-top: 2rem;
+        max-width: 100%;
+        height: auto;
+    }
+    button {
+        
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+        padding: 1rem 4rem;
+        font-size: 1rem;
+        height: auto;
+        width:auto;
+    }
+}
