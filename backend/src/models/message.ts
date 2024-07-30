@@ -1,7 +1,7 @@
-import { DataTypes, Model, Optional } from "sequelize";
-import sequelize from "../config/db";
-import User from "./user";
-import Group from "./group";
+// src/models/message.ts
+import { DataTypes, Model, Optional } from 'sequelize';
+import sequelize from '../config/db';
+import User from './user';
 
 interface MessageAttributes {
   id: string;
@@ -14,12 +14,9 @@ interface MessageAttributes {
   updatedAt?: Date;
 }
 
-interface MessageCreationAttributes extends Optional<MessageAttributes, "id"> {}
+interface MessageCreationAttributes extends Optional<MessageAttributes, 'id'> {}
 
-class Message
-  extends Model<MessageAttributes, MessageCreationAttributes>
-  implements MessageAttributes
-{
+class Message extends Model<MessageAttributes, MessageCreationAttributes> implements MessageAttributes {
   public id!: string;
   public senderId!: string;
   public receiverId!: string;
@@ -41,24 +38,24 @@ Message.init(
       type: DataTypes.UUID,
       allowNull: false,
       references: {
-        model: "users", // Ensure this matches your User table name
-        key: "id",
+        model: 'users', // Ensure this matches your User table name
+        key: 'id',
       },
     },
     receiverId: {
       type: DataTypes.UUID,
       allowNull: false,
       references: {
-        model: "users", // Ensure this matches your User table name
-        key: "id",
+        model: 'users', // Ensure this matches your User table name
+        key: 'id',
       },
     },
     groupId: {
       type: DataTypes.UUID,
       allowNull: true,
       references: {
-        model: "groups", // Ensure this matches your Group table name
-        key: "id",
+        model: 'groups', // Ensure this matches your Group table name
+        key: 'id',
       },
     },
     messageType: {
@@ -72,11 +69,14 @@ Message.init(
   },
   {
     sequelize,
-    modelName: "Message",
-    tableName: "messages",
+    modelName: 'Message',
+    tableName: 'messages',
     underscored: false,
     timestamps: true,
   }
 );
+
+Message.belongsTo(User, { as: 'sender', foreignKey: 'senderId' });
+Message.belongsTo(User, { as: 'receiver', foreignKey: 'receiverId' });
 
 export default Message;

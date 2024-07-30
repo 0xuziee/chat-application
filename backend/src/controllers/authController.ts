@@ -26,6 +26,7 @@ export const registerUser = async (req: Request, res: Response) => {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production', 
       maxAge: 3600000, 
+      sameSite: 'none'
     });
 
     res.status(201).json({
@@ -38,31 +39,42 @@ export const registerUser = async (req: Request, res: Response) => {
   }
 };
 
+
 export const signIn = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
   try {
+    // Find user by email
     const user = await User.findOne({ where: { email } });
 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
 
+    // Compare passwords
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
+    // Generate JWT token
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!, { expiresIn: '1h' });
 
+    // Set cookie with token
     res.cookie('token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production', // Set secure flag in production
-      maxAge: 3600000, 
+      maxAge: 3600000, // 1 hour
     });
 
-    res.json({ message: 'Sign-in successful' });
+    // Send response with token and user details
+    res.json({
+      message: 'Sign-in successful',
+      token,
+      userId: user.id,
+      username: user.username, // Assuming your User model has a username field
+    });
   } catch (error) {
     console.error('Error signing in user:', error);
     res.status(500).json({ message: 'Error signing in user', error });

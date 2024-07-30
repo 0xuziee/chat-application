@@ -55,3 +55,17 @@ export const updateUserProfile = async (req: AuthenticatedRequest, res: Response
     res.status(500).json({ message: 'Error updating user profile' });
   }
 };
+
+export const getFirst10Users = async (req: Request, res: Response) => {
+  try {
+    const users = await User.findAll({
+      limit: 10,  // Limit to the first 10 users
+      attributes: ['id', 'username', 'email', 'displayName', 'profilePicture'], // Adjust attributes as needed
+    });
+
+    res.json(users);
+  } catch (error) {
+    console.error('Error fetching first 10 users:', error);
+    res.status(500).json({ message: 'Error fetching first 10 users' });
+  }
+};
